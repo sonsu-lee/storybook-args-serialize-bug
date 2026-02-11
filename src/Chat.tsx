@@ -1,4 +1,4 @@
-import { type FormEvent, type RefObject, type ReactNode } from "react";
+import { type RefObject, type ReactNode } from "react";
 
 export interface ChatFetcher {
   submit: (data: FormData) => void;
@@ -17,9 +17,9 @@ export function Chat({
   formRef,
   placeholder = "Type a message...",
 }: ChatProps) {
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const formData = new FormData(e.target as HTMLFormElement);
+    const formData = new FormData(e.currentTarget);
     fetcher.submit(formData);
   };
 
